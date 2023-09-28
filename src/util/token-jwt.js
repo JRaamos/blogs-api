@@ -9,7 +9,15 @@ const config = {
 
 const tokenJwt = (id) => 
   jwt.sign({ data: { id } }, secret, config);
-
+  
+const decodeJwt = (token) => {
+  try {
+    return jwt.verify(token, secret);
+  } catch (error) {
+    return null;
+  }
+};
 module.exports = {
   tokenJwt,
+  decodeJwt,
 };
