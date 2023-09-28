@@ -6,9 +6,11 @@ const createUser = async ({ displayName, email, password, image }) => {
 };
 
 const getUserById = async (id) => {
-  const user = await User.findByPk(id);
+  const user = await User.findByPk(id, { attributes: { exclude: ['password'] } });
+  if (!user) return { message: 'User does not exist' };
   return user;
 };
+
 const getUserByEmail = async (email) => {
   const user = await User.findOne({ where: { email } });
   return user;
