@@ -12,7 +12,8 @@ router.post(
   validateEmailExists, 
   userController.createUser,
 );
-router.get('/user', validateJWT, userController.getAllUsers);
 
+router.get('/user', validateJWT, userController.getAllUsers);
 router.get('/user/:id', validateJWT, userController.getUserById);
+
 module.exports = router;
