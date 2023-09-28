@@ -8,13 +8,6 @@ const login = async (email, password) => {
       message: 'Invalid fields',
     };
   }
-  /* if (user.email !== email || user.password !== password) {
-    return {
-      status: 400,
-      message: 'Invalid fields',
-    };
-  }
-  */
   return user;
 };
 
