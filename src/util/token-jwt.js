@@ -17,6 +17,7 @@ const decodeJwt = (token) => {
     return null;
   }
 };
+
 module.exports = {
   tokenJwt,
   decodeJwt,
