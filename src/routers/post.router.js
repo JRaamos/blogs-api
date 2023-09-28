@@ -6,4 +6,5 @@ const { validatePost, validateCategoryExists } = require('../middlewares/validat
 
 router.post('/post', validateJWT, validatePost, validateCategoryExists, postController.createPost);
 router.get('/post', validateJWT, postController.getAllPosts);
+router.get('/post/:id', validateJWT, postController.getPostById);
 module.exports = router;
