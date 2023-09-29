@@ -22,6 +22,11 @@ router.get(
   postController.getAllPosts,
 );
 router.get(
+  '/post/search',
+  validateJWT,
+  postController.searchPosts,
+);
+router.get(
   '/post/:id',
   validateJWT,
   postController.getPostById,
