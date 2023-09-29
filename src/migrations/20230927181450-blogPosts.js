@@ -16,7 +16,8 @@ module.exports = {
         references: {
           model: 'users',
           key: 'id',
-        }
+        },
+        onDelete: 'CASCADE',
       },
       published: Sequelize.DATE,
       updated: Sequelize.DATE,
