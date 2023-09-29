@@ -34,8 +34,19 @@ const getPostById = async (id) => {
   if (!post) return { message: 'Post does not exist' };
   return post;
 };
+
+const updatePostId = async (id, title, content) => {
+  await BlogPost.update(
+    { title, content },
+    { where: { id } },
+  );
+  const post = await getPostById(id);
+  return post;
+};
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostById,
+  updatePostId,
 };

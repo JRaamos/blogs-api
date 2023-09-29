@@ -1,4 +1,4 @@
-const { userService } = require('../services');
+const { userService, postService } = require('../services');
 
 const validateDisplayName = (req, res, next) => { 
   const { displayName } = req.body;
@@ -38,9 +38,33 @@ const validateEmailExists = async (req, res, next) => {
   next();
 };
 
+const validateUserPut = async (req, res, next) => {
+  const { id } = req.params;
+  const userId = req.user.id;
+
+  const posts = await postService.getPostById(id);
+
+  if (userId !== posts.user.id) {
+    return res.status(401).json({ message: 'Unauthorized user' });
+  }
+  next();
+};
+
+const validateTitleAndContent = (req, res, next) => {
+  const { title, content } = req.body;
+
+  if (!title || !content) {
+    return res.status(400).json({
+      message: 'Some required fields are missing',
+    });
+  }
+  next();
+};
 module.exports = {
   validateDisplayName,
   validateEmail,
   validatePassword,
   validateEmailExists,
+  validateUserPut,
+  validateTitleAndContent,
 };
