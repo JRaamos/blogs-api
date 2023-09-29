@@ -23,10 +23,15 @@ const updatePostId = async (req, res) => {
   const post = await postService.updatePostId(id, title, content);
   return res.status(200).json(post);
 };
-
+const deletePostId = async (req, res) => {
+  const { id } = req.params;
+  await postService.deletePostId(id);
+  return res.status(204).end();
+};
 module.exports = {
   createPost,
   getAllPosts,
   getPostById,
   updatePostId,
+  deletePostId,
 };

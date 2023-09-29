@@ -1,3 +1,4 @@
+const { postService } = require('../services');
 const { getAllCategories } = require('../services/category.service');
 
 const validatePost = (req, res, next) => {
@@ -20,7 +21,17 @@ const validateCategoryExists = async (req, res, next) => {
   }
   next();
 };
+
+const validatePostExistId = async (req, res, next) => {
+  const { id } = req.params;
+  console.log(id);
+  const post = await postService.getPostById(id);
+  if (post.message) return res.status(404).json(post);
+  next();
+};
+
 module.exports = {
   validatePost,
   validateCategoryExists,
+  validatePostExistId,
 };

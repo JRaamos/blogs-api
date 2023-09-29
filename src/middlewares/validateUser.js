@@ -38,7 +38,7 @@ const validateEmailExists = async (req, res, next) => {
   next();
 };
 
-const validateUserPut = async (req, res, next) => {
+const validateUserAuthorization = async (req, res, next) => {
   const { id } = req.params;
   const userId = req.user.id;
 
@@ -65,6 +65,6 @@ module.exports = {
   validateEmail,
   validatePassword,
   validateEmailExists,
-  validateUserPut,
+  validateUserAuthorization,
   validateTitleAndContent,
 };

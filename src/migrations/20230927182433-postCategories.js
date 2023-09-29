@@ -8,14 +8,16 @@ module.exports = {
         references: {
           model: 'blog_posts',
           key: 'id',
-        }
+        },
+        onDelete: 'CASCADE',
       },
       category_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'categories',
           key: 'id',
-        }
+        },
+        onDelete: 'CASCADE',
       },
      });
     
